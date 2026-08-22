@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Muttakin Ali | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff9100;
+            --primary-hover: #e68200;
+            --bg: #050505;
+            --card-bg: #0a0a0a;
+            --card-border: #1f1f1f;
+            --text-main: #ffffff;
+            --text-dim: #a1a1aa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 1.2rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo { font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.85rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1200 0%, #050505 70%);
+            padding: 0 10%;
+        }
+
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 0.5rem; }
+        .hero h1 span { color: var(--primary); }
+        .hero .position { font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 1px; }
+        
+        .btn-small {
+            padding: 0.6rem 1.5rem;
+            background: var(--primary);
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .btn-small:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+        
+        section { padding: 90px 10%; }
+        .section-title { font-size: 1.6rem; margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem; }
+        .section-title::after { content: ""; height: 1px; background: var(--card-border); flex-grow: 1; }
+
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 40px 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-card h2 { color: var(--primary); font-size: 2.5rem; margin-bottom: 10px; font-weight: 800; }
+        .stat-card p { color: var(--text-dim); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+
+        .summary-text-wrapper { display: flex; justify-content: center; text-align: center; }
+        .summary-text { color: var(--text-dim); max-width: 900px; font-size: 1.1rem; line-height: 1.8; }
+
+        
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .skill-category { background: var(--card-bg); border: 1px solid var(--card-border); padding: 1.5rem; border-radius: 12px; }
+        .skill-category h4 { color: var(--primary); margin-bottom: 1rem; font-size: 1rem; text-transform: uppercase; }
+        .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+        
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem; }
+        .project-card { background: var(--card-bg); border: 1px solid var(--card-border); padding: 2.2rem; border-radius: 12px; transition: 0.3s; height: 100%; display: flex; flex-direction: column; }
+        .project-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .project-card i { font-size: 1.5rem; color: var(--primary); margin-bottom: 1.2rem; }
+        .project-card h3 { margin-bottom: 0.8rem; }
+        .project-card p { flex-grow: 1; color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        
+        .tag-container { margin-bottom: 1rem; }
+        .tag { font-family: 'Fira Code', monospace; font-size: 0.7rem; color: var(--primary); background: rgba(255, 145, 0, 0.1); padding: 3px 8px; border-radius: 4px; margin-right: 5px; }
+        .live-link { text-decoration: none; color: var(--text-main); font-size: 0.85rem; font-weight: 700; border-bottom: 1px solid var(--primary); width: fit-content; }
+
+        
+        .contact-box { text-align: center; padding: 4rem 2rem; border: 1px solid var(--card-border); border-radius: 16px; }
+        .social-links { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; }
+        .social-links a { color: var(--text-dim); font-size: 1.6rem; transition: 0.3s; }
+        .social-links a:hover { color: var(--primary); }
+
+        footer { padding: 3rem; text-align: center; font-size: 0.8rem; color: var(--text-dim); border-top: 1px solid var(--card-border); }
+
+        @media (max-width: 768px) { .nav-links { display: none; } section { padding: 60px 5%; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MUTTAKIN.ALI</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <p style="font-family: 'Fira Code'; color: var(--primary); font-size: 0.8rem; margin-bottom: 1rem;">&lt;developer&gt;</p>
+        <h1>Md. <span>Muttakin Ali</span></h1>
+        <p class="position">Competitive Programmer | Frontend Developer </p>
+        <p style="color: var(--text-dim); max-width: 600px; margin-bottom: 2rem;">
+             BSc in CSE at University of Information Technology & Sciences (UITS). 
+             Solving complex algorithmic problems and building robust web architectures.
+        </p>
+        <a href="#projects" class="btn-small">Explore Work</a>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">01.  Professional Summary </h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h2>650+</h2>
+                 <p>Codeforces Solved</p>
+            </div>
+            <div class="stat-card">
+                <h2>800+</h2>
+                 <p>Total Problems Solved</p>
+            </div>
+            <div class="stat-card">
+                <h2>30+</h2>
+                 <p>Contests Participated</p>
+            </div>
+        </div>
+        <div class="summary-text-wrapper">
+            <p class="summary-text">
+                 Analytical Computer Science student with a deep passion for algorithmic efficiency and backend architecture. 
+                 I have an advanced grasp of complex logic and optimization, demonstrated by my achievements in competitive programming. 
+                 I am eager to leverage this discipline to write high-quality, production-ready code.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">02.  Technical Expertise </h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Languages</h4>
+                <div class="skill-list">
+                     <span class="tag">C</span> <span class="tag">C++</span> <span class="tag">JavaScript</span> <span class="tag">SQL</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4>Technologies</h4>
+                <div class="skill-list">
+                     <span class="tag">Node.js</span> <span class="tag">MongoDB</span> <span class="tag">HTML</span> <span class="tag">CSS</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4>Fundamentals</h4>
+                <div class="skill-list">
+                     <span class="tag">Problem Solving</span> <span class="tag">Responsive Design</span> <span class="tag">UI/UX</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">03.  Featured Work</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <i class="fas fa-home"></i>
+                 <h3>Bachelor Care Service </h3>
+                <div class="tag-container">
+                     <span class="tag">Node.js</span> <span class="tag">Full-Stack</span> 
+                </div>
+                 <p>Architected a scalable full-stack application by developing a responsive website.</p>
+                 <a href="https://bachelorcareservice.netlify.app" class="live-link" target="_blank">Live Site →</a>
+            </div>
+
+            <div class="project-card">
+                <i class="fas fa-ticket-alt"></i>
+                 <h3>Online Ticket Booking</h3>
+                <div class="tag-container">
+                     <span class="tag">Full-Stack</span> <span class="tag">Real-time</span>
+                </div>
+                 <p>Engineered a platform for real-time ticket reservations with a robust transaction backend.</p>
+                 <a href="https://skameen18.github.io/Online_Bus_Ticket_system/" class="live-link" target="_blank">Live Site →</a>
+            </div>
+
+            <div class="project-card">
+                <i class="fas fa-apple-whole"></i>
+                 <h3>Food Quality Checker </h3>
+                <div class="tag-container">
+                     <span class="tag">Frontend</span> <span class="tag">UI/UX</span>
+                </div>
+                 <p>Built a responsive freshness analyzer enabling users to evaluate food safety metrics.</p>
+                 <a href="https://foodqualitychecker.netlify.app" class="live-link" target="_blank">Live Site → </a>
+            </div>
+
+            <div class="project-card">
+                <i class="fas fa-images"></i>
+                <h3>Interactive Gallery</h3>
+                <div class="tag-container">
+                    <span class="tag">Vanilla JS</span> <span class="tag">CSS3</span>
+                </div>
+                <p>Responsive image gallery with smooth category filtering and interactive lightbox navigation.</p>
+            </div>
+
+            <div class="project-card">
+                <i class="fas fa-calculator"></i>
+                <h3>Modern Calculator</h3>
+                <div class="tag-container">
+                    <span class="tag">JavaScript</span> <span class="tag">Glassmorphism</span>
+                </div>
+                <p>A sleek arithmetic tool featuring a modern glass-style UI and full keyboard support for seamless use.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-box">
+            <h2>Let's Connect</h2>
+             <p style="color: var(--text-dim); margin-top: 10px;">17/A house-06, Mirpur-11, Dhaka-1216, Bangladesh </p>
+             <p style="color: var(--primary); font-weight: 700; margin-top: 5px;">ameen.ali1801@gmail.com </p>
+            
+            <div class="social-links">
+                 <a href="https://github.com/SkAmeen18" target="_blank"><i class="fab fa-github"></i></a>
+                 <a href="https://www.linkedin.com/in/muttakin-ali-ameen-a7b603334" target="_blank"><i class="fab fa-linkedin"></i></a> 
+                 <a href="mailto:ameen.ali1801@gmail.com"><i class="fas fa-envelope"></i></a> 
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Md. Muttakin Ali.  All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
